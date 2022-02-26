@@ -33,6 +33,7 @@ foreach (string file in Directory.GetFiles(@Console.ReadLine()))
             else newfile.Add("    UPROPERTY(EditAnywhere, BlueprintReadWrite)");
             continue;
         }
+
         if (text[i].Contains("UFUNCTION"))
         {
             newfile.Add("    UFUNCTION(BlueprintCallable)");
@@ -52,7 +53,7 @@ foreach (string file in Directory.GetFiles(@Console.ReadLine()))
     string[] text = File.ReadAllLines(file);
     for (int i = 0; i < text.Length; i++)
     {
-        if (text[i].Split("::")[0] == text[i].Split("::")[0])
+        if (text[i].Contains("::") && text[i].Split("::")[1].Contains(text[i].Split("::")[0]))
         {
             newfile.Add("//" + text[i]);
             comment = true;
@@ -64,7 +65,9 @@ foreach (string file in Directory.GetFiles(@Console.ReadLine()))
             newfile.Add("//" + text[i]);
             continue;
         }
+        newfile.Add(text[i]);
     }
+    File.WriteAllLines(file, newfile);
 }
 Console.WriteLine("Constructor commenting operation complete");
 Console.ReadKey();
