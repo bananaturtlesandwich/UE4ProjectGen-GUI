@@ -30,12 +30,12 @@ foreach (string file in Directory.GetFiles(@Console.ReadLine()))
         if (text[i].Contains("UPROPERTY"))
         {
             if (delegates.Contains(text[i + 1].Split(' ')[0])) newfile.Add(text[i + 1]);
-            else newfile.Add("UPROPERTY(EditAnywhere, BlueprintReadWrite)");
+            else newfile.Add("    UPROPERTY(EditAnywhere, BlueprintReadWrite)");
             continue;
         }
         if (text[i].Contains("UFUNCTION"))
         {
-            newfile.Add("UFUNCTION(BlueprintCallable)");
+            newfile.Add("    UFUNCTION(BlueprintCallable)");
             continue;
         }
         newfile.Add(text[i]);
