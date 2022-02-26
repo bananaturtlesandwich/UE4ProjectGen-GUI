@@ -33,6 +33,11 @@ foreach (string file in Directory.GetFiles(@Console.ReadLine()))
             else newfile.Add("UPROPERTY(EditAnywhere, BlueprintReadWrite)");
             continue;
         }
+        if (text[i].Contains("UFUNCTION"))
+        {
+            newfile.Add("UFUNCTION(BlueprintCallable)");
+            continue;
+        }
         newfile.Add(text[i]);
     }
     File.WriteAllLines(file, newfile);
