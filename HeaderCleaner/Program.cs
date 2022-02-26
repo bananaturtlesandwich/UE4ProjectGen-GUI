@@ -42,4 +42,29 @@ foreach (string file in Directory.GetFiles(@Console.ReadLine()))
     }
     File.WriteAllLines(file, newfile);
 }
+Console.WriteLine("Cleaning operation complete");
+
+Console.Write("Now enter the directory of UE4SS generated cpp files you want to rid of constructors: ");
+foreach (string file in Directory.GetFiles(@Console.ReadLine()))
+{
+    bool comment = false;
+    List<string> newfile = new List<string>();
+    string[] text = File.ReadAllLines(file);
+    for (int i = 0; i < text.Length; i++)
+    {
+        if (text[i].Split("::")[0] == text[i].Split("::")[0])
+        {
+            newfile.Add("//" + text[i]);
+            comment = true;
+            continue;
+        }
+        if (comment)
+        {
+            if (text[i].Contains('}')) comment = false;
+            newfile.Add("//" + text[i]);
+            continue;
+        }
+    }
+}
+Console.WriteLine("Constructor commenting operation complete");
 Console.ReadKey();
