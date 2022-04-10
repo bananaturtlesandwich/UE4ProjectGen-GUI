@@ -52,6 +52,7 @@
             // EditorBinaryPrompt
             // 
             this.EditorBinaryPrompt.Filter = "executable files|*.exe";
+            this.EditorBinaryPrompt.InitialDirectory = "C:\\Program Files (x86)";
             // 
             // EditorBinaryText
             // 
@@ -190,6 +191,7 @@
             // ProjectGenPrompt
             // 
             this.ProjectGenPrompt.Filter = "uproject files|*.uproject";
+            this.ProjectGenPrompt.InitialDirectory = "\\";
             // 
             // GameProjectPrompt
             // 

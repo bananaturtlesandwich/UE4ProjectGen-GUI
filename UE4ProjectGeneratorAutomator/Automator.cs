@@ -37,8 +37,9 @@ namespace UE4ProjectGeneratorAutomator
             const char quote = '\"';
             if (OutputPrompt.ShowDialog() == DialogResult.OK)
             {
-                File.WriteAllText(@$".\{OutputPrompt.SelectedPath.Split("\\")[OutputPrompt.SelectedPath.Length - 1]}.bat", $"{quote}{EditorBinaryText.Text}{quote} {quote}{ProjectGenText.Text}{quote} -run=ProjectGenerator -HeaderRoot={quote}{HeaderText.Text}{quote} -ProjectFile={quote}{GameProjectText.Text}{quote} -PluginManifest={quote}{GamePluginText.Text}{quote} -OutputDir={quote}{OutputPrompt.SelectedPath}{quote} -stdout -unattended -NoLogTimes");
-                System.Diagnostics.Process.Start(@".\CreateProject.bat");
+                string batch = @$".\{OutputPrompt.SelectedPath.Split('\\')[OutputPrompt.SelectedPath.Split('\\').Length - 1]}.bat";
+                File.WriteAllText(batch, $"{quote}{EditorBinaryText.Text}{quote} {quote}{ProjectGenText.Text}{quote} -run=ProjectGenerator -HeaderRoot={quote}{HeaderText.Text}{quote} -ProjectFile={quote}{GameProjectText.Text}{quote} -PluginManifest={quote}{GamePluginText.Text}{quote} -OutputDir={quote}{OutputPrompt.SelectedPath}{quote} -stdout -unattended -NoLogTimes");
+                System.Diagnostics.Process.Start(batch);
             }
         }
     }
