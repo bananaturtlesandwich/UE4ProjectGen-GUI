@@ -1,1 +1,1 @@
-This application gives the [commandlet](https://github.com/Archengius/UE4GameProjectGenerator) a GUI, and will generate batchfiles so the process need not be repeated (still requires building the uproject beforehand)
+This application gives the UE4GameProjectGenerator [commandlet](https://github.com/Archengius/UE4GameProjectGenerator) a GUI, and will generate batchfiles so the process need not be repeated (still requires building the uproject beforehand)
